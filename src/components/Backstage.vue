@@ -17,9 +17,10 @@
 </template>
 
 <script setup>
-import MyContent from "~/components/MyContent.vue";
-import MyNav from "~/components/MyNav.vue";
-import MyHeader from "~/components/MyHeader.vue";</script>
+import MyContent from "./MyContent.vue";
+import MyNav from "./MyNav.vue";
+import MyHeader from "./MyHeader.vue";
+</script>
 
 <style scoped>
 #My-el-aside {

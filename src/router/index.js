@@ -3,22 +3,22 @@ const routes = [
     {
         path: "/",
         name:"login",
-        component: ()=>import("~/components/login.vue"),
+        component: ()=>import("../components/login.vue"),
     },
     {
         path: "/backstage",
         name:"backstage",
-        component: ()=>import("~/components/Backstage.vue"),
+        component: ()=>import("../components/Backstage.vue"),
     },
     {
       path: "/backstage/admin",
       name:"admin",
-      component:()=>import("~/components/admin.vue")
+      component:()=>import("../components/admin.vue")
     },
     {
         path: "/:pathMatch(.*)*",
         name: "NotFound",
-        component: ()=>import("~/components/404.vue")
+        component: ()=>import("../components/404.vue")
     },
 ];
 
