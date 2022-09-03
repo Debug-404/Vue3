@@ -14,8 +14,8 @@
     </el-menu-item>
     <el-sub-menu index="2">
       <template #title>设置</template>
-      <el-menu-item index="2-1" @click="Modify">修改密码</el-menu-item>
-      <el-menu-item index="2-2">退出登录</el-menu-item>
+      <el-menu-item index="2-1" @click="userModify">修改密码</el-menu-item>
+      <el-menu-item index="2-2" @click="userQuit">退出登录</el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>
@@ -27,15 +27,21 @@ import {useStore} from 'vuex'
 const router = useRouter();
 const store = useStore()
 const activeIndex = ref("1");
-let adminiName = ref(`管理员${store.state.user}`);
+let adminiName = `管理员${store.state.user}`;
 const handleSelect = () => {
   alert("欢迎使用学生信息管理系统");
 };
-const Modify = () => {
+const userModify = () => {
   router.push({
     path: "/backstage/admin",
   });
 };
+const userQuit = () => {
+  router.push({
+    path: "/"
+  });
+  store.commit("removeUser")
+}
 </script>
 <style scoped>
 .flex-grow {

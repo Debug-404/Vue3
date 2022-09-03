@@ -79,17 +79,17 @@ const onSubmit = () => {
       login(formInline.value["user"], formInline.value["region"])
         .then((data) => {
           if (data["code"]) {
+            stops.commit("setUser",formInline.value["user"])
             router.push({ path: "/backstage" });
-            stops.commit("userInfo", formInline.value["user"]);
             ElNotification({
               title: formInline.value["user"],
-              message: "欢迎使用",
+              message: data["msg"],
               type: "success",
             });
           } else {
             ElNotification({
               title: "Error",
-              message: "账号或者密码错误,请重新输入",
+              message: data["msg"],
               type: "error",
             });
           }
