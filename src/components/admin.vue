@@ -57,19 +57,29 @@
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from "vuex"
-import {changePassword} from "../utils/http.js"
+import {changePassword, login} from "../utils/http.js"
 import {ElNotification} from "element-plus";
 
-const store = useStore()
+const store = useStore() //vuex 状态
 const ruleFormRef = ref()
-const router = useRouter();
+const router = useRouter(); // 路由
 const labelPosition = ref("right");
 const data = ref({
   currentPassword: "",
   newPassword1: "",
   newPassword2: "",
 });
-
+//自定义校验规则
+const currentPassword = (rule, value, callback) => {
+  if(!value){
+    callback(new Error("请输入密码"))
+  }else if(!login(store.state.user,value)["code"]){
+    callback(new Error("与当前密码不相同"))
+  }else {
+    callback()
+  }
+}
+//自定义校验规则
 const checkPassword1 = (rule, value, callback) => {
   if (!value) {
     callback(new Error("请输入密码"))
@@ -79,7 +89,7 @@ const checkPassword1 = (rule, value, callback) => {
     callback()
   }
 }
-
+//自定义校验规则
 const checkPassword2 = (rule, value, callback) => {
   if (!value) {
     callback(new Error("请输入密码"))
@@ -89,9 +99,11 @@ const checkPassword2 = (rule, value, callback) => {
     callback()
   }
 }
+
+//表单提交前的校验
 const rules = {
   currentPassword: [
-    {required: true, message: "密码不能为空", trigger: "blur"},
+    {validator:currentPassword,required: true, trigger: "blur"},
     {min: 6, max: 20, message: "密码长度是6-20", trigger: "blur"},
   ],
   newPassword1: [
@@ -104,6 +116,7 @@ const rules = {
   ]
 }
 
+//向后台提交
 const submitData = () => {
   ruleFormRef.value.validate((val) => {
     if (val) {
@@ -128,6 +141,12 @@ const submitData = () => {
           }).catch((err) => {
         console.log(err)
       })
+    } else {
+      ElNotification({
+        title: "warning",
+        message: "操作失败,请重新确认",
+        type: "warning",
+      });
     }
   })
 };

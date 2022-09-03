@@ -49,3 +49,9 @@ export function changePassword(user, password) {
      */
     return request.post("/changePassword", {user, password})
 }
+
+export function selPassword(){
+    /**
+     * @校验当前密码是否一致
+     */
+}
