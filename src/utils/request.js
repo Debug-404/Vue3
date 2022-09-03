@@ -4,6 +4,7 @@ import {ElNotification} from "element-plus";
 const request = axios.create({
     baseURL: 'http://127.0.0.1:5000',
     timeout: 5000,
+    headers: {"Content-Type": "application/json"}
 })
 // 添加请求拦截器
 request.interceptors.request.use(function (config) {

@@ -23,6 +23,7 @@
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from 'vuex'
+import {removeToKen} from "../utils/userCookie.js";
 
 const router = useRouter();
 const store = useStore()
@@ -41,6 +42,7 @@ const userQuit = () => {
     path: "/"
   });
   store.commit("removeUser")
+  removeToKen()
 }
 </script>
 <style scoped>
