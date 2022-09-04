@@ -5,7 +5,7 @@ export function getToKen() {
 }
 
 export function setToKen(token) {
-    return Cookies.set("token", token)
+    return Cookies.set("token", token, { expires: 7 })
 }
 
 export function removeToKen() {

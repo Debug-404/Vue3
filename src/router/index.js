@@ -1,4 +1,4 @@
-import {createRouter, createWebHashHistory} from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import {getToKen} from "../utils/userCookie.js";
 import {ElNotification} from "element-plus";
 
@@ -26,7 +26,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes,
 });
 
@@ -39,7 +39,7 @@ router.beforeEach((to, from, next) => {
         });
         next({path: "/"})
     } else if (getToKen() && to.path === "/") {
-        next({path:"/backstage"})
+        next({path: "/backstage"})
     } else {
         next()
     }

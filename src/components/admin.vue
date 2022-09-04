@@ -10,7 +10,7 @@
         >
           <el-menu-item index="0">学生信息管理系统</el-menu-item>
           <div class="flex-grow"/>
-          <el-menu-item index="1" @click="router.push({ path: '/backstage' })"
+          <el-menu-item index="1" @click="router.push({ path: '/backstage' }) "
           >返回
           </el-menu-item
           >
@@ -38,8 +38,8 @@
                   <el-input v-model="data.newPassword2" type="password"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button round type="primary" @click="submitData"
-                  >确认
+                  <el-button icon="Finished" round type="primary" @click="submitData"
+                  >确认修改
                   </el-button
                   >
                 </el-form-item>
@@ -71,11 +71,11 @@ const data = ref({
 });
 //自定义校验规则
 const currentPassword = (rule, value, callback) => {
-  if(!value){
+  if (!value) {
     callback(new Error("请输入密码"))
-  }else if(!login(store.state.user,value)["code"]){
+  } else if (!login(store.state.user, value)["code"]) {
     callback(new Error("与当前密码不相同"))
-  }else {
+  } else {
     callback()
   }
 }
@@ -103,7 +103,7 @@ const checkPassword2 = (rule, value, callback) => {
 //表单提交前的校验
 const rules = {
   currentPassword: [
-    {validator:currentPassword,required: true, trigger: "blur"},
+    {validator: currentPassword, required: true, trigger: "blur"},
     {min: 6, max: 20, message: "密码长度是6-20", trigger: "blur"},
   ],
   newPassword1: [

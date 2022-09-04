@@ -1,20 +1,24 @@
 <template>
-  <div class="myFun">
-    <el-input v-model="inputData" placeholder="名字查找" style="width: 200px" @input="selStudent"/>
-    <el-button type="primary" @click="addStu">添加学生</el-button>
-  </div>
+  <el-row :gutter="20" justify="space-between">
+    <el-col :span="3">
+      <el-input v-model="inputData" placeholder="名字查找" prefix-icon="Search" @input="selStudent"/>
+    </el-col>
+    <el-col :span="2">
+      <el-button icon="CirclePlus" type="primary" @click="addStu">添加学生</el-button>
+    </el-col>
+  </el-row>
   <el-table :data="tableData" border style="width: 100%">
-    <el-table-column fixed label="学号" prop="id" width="150"/>
+    <el-table-column label="学号" prop="id" width="150"/>
     <el-table-column label="姓名" prop="name" width="120"/>
     <el-table-column label="性别" prop="sex" width="120"/>
     <el-table-column label="年龄" prop="age" width="120"/>
     <el-table-column label="家庭住址" prop="address"/>
-    <el-table-column fixed="right" label="操作" width="150">
+    <el-table-column fixed="right" label="操作" width="170">
       <template #default="scope">
-        <el-button size="small" type="primary" @click="changeDialog(scope.row, scope.$index)">
+        <el-button icon="Edit" size="small" type="primary" @click="changeDialog(scope.row, scope.$index)">
           编辑
         </el-button>
-        <el-button size="small" type="danger" @click="delStudent(scope.row)">
+        <el-button icon="Delete" size="small" type="danger" @click="delStudent(scope.row)">
           删除
         </el-button>
       </template>
@@ -42,8 +46,8 @@
       </el-form>
       <template #footer>
         <span class="dialog-footer">
-          <el-button type="" @click="dialogFormVisible = false; form = {};">取消</el-button>
-          <el-button type="primary" @click="tableConfig">{{
+          <el-button icon="Close" round type="danger" @click="dialogFormVisible = false; form = {};">取消</el-button>
+          <el-button icon="CircleCheck" round type="primary" @click="tableConfig">{{
               dialogType === "add" ? "确认添加" : "确认修改"
             }}</el-button>
         </span>
@@ -202,10 +206,5 @@ const selStudent = () => {
 <style>
 .dialog-footer button:first-child {
   margin-right: 10px;
-}
-
-.myFun {
-  display: flex;
-  justify-content: space-between;
 }
 </style>

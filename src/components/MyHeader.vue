@@ -8,12 +8,19 @@
   >
     <el-menu-item index="0">学生信息管理系统</el-menu-item>
     <div class="flex-grow"/>
-    <el-menu-item index="1" @click="handleSelect">{{
-        adminiName
-      }}
+    <el-menu-item index="1" @click="handleSelect">
+      <el-icon>
+        <User/>
+      </el-icon>
+      {{ adminiName }}
     </el-menu-item>
     <el-sub-menu index="2">
-      <template #title>设置</template>
+      <template #title>
+        <el-icon>
+          <Setting/>
+        </el-icon>
+        设置
+      </template>
       <el-menu-item index="2-1" @click="userModify">修改密码</el-menu-item>
       <el-menu-item index="2-2" @click="userQuit">退出登录</el-menu-item>
     </el-sub-menu>
@@ -48,5 +55,8 @@ const userQuit = () => {
 <style scoped>
 .flex-grow {
   flex-grow: 1;
+}
+.is-active{
+  border: transparent !important;
 }
 </style>

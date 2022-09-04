@@ -6,20 +6,19 @@
           基于vue3实现的学生信息管理系统
         </div>
       </el-collapse-item>
-      <el-collapse-item title="技术储备" name="2">
+      <el-collapse-item title="功能1" name="2">
         <div>
-          技术栈:HTML5,CSS3,JavaScript,
-          <br>python,MySQL;
+          还没想好
         </div>
       </el-collapse-item>
-      <el-collapse-item title="框架" name="3">
+      <el-collapse-item title="功能2" name="3">
         <div>
-          Vue3,Vue router,axiso,element-ui,Flask;
+          还没想好
         </div>
       </el-collapse-item>
-      <el-collapse-item title="制作者" name="4">
+      <el-collapse-item title="功能3" name="4">
         <div>
-          20计科张寒
+          还没想好
         </div>
       </el-collapse-item>
     </el-collapse>

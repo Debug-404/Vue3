@@ -26,4 +26,7 @@ import MyHeader from "./MyHeader.vue";
 #My-el-aside {
   margin-top: 10px;
 }
+.common-layout{
+  /*background-image: url("../public/img/01.jpg");*/
+}
 </style>
