@@ -170,6 +170,6 @@ body {
 }
 
 body {
-  background-image: url("../public/img/01.jpg");
+
 }
 </style>
