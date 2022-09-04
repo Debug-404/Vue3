@@ -38,6 +38,8 @@ router.beforeEach((to, from, next) => {
             type: "error",
         });
         next({path: "/"})
+    } else if (getToKen() && to.path === "/") {
+        next({path:"/backstage"})
     } else {
         next()
     }

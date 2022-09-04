@@ -81,7 +81,7 @@ const onSubmit = () => {
           .then((data) => {
             if (data["code"]) {
               stops.commit("setUser", formInline.value["user"]);
-              setToKen("001")
+              setToKen(data["token"])
               router.push({path: "/backstage"});
               ElNotification({
                 title: formInline.value["user"],
