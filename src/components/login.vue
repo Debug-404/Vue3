@@ -1,9 +1,9 @@
 <template>
-  <el-row justify="space-between" style="min-height: 100vh; background-image: url('../public/img/01.jpg')">
+  <el-row justify="space-between" style="min-height: 100vh;background-image: url('/public/img/01.jpg')">
     <el-col :lg="18" :md="12" class="flex items-center justify-center">
       <div>
         <div class="font-semibold text-6xl text-yellow-500 mb-4">欢迎使用</div>
-        <div class="text-yellow-500">学生信息管理系统WEB页面</div>
+        <div class="text-yellow-500">学生信息管理系统WEB页面demo</div>
       </div>
     </el-col>
     <el-col :lg="6" :md="12" class="flex items-center justify-center flex-col">
@@ -54,7 +54,6 @@ const rules = {
 };
 
 let ruleFormRef = ref();
-
 //登录提交表单并且设置token
 const onSubmit = () => {
   ruleFormRef.value.validate((val) => {
@@ -87,6 +86,9 @@ const onSubmit = () => {
 </script>
 
 <style scoped>
+.flex-grow {
+  flex-grow: 1;
+}
 
 .el-main {
   --el-main-padding: 10px;

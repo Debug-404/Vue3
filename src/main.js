@@ -6,6 +6,7 @@ import router from "./router/index.js";
 import store from "./store/index.js";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+
 const app = createApp(App);
 app.use(ElementPlus);
 app.use(router);
