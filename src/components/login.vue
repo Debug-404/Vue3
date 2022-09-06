@@ -1,51 +1,30 @@
 <template>
-  <div class="common-layout">
-    <el-container>
-      <el-header>
-        <el-menu :ellipsis="false" class="el-menu-demo" mode="horizontal">
-          <el-menu-item index="0">管理系统</el-menu-item>
-          <div class="flex-grow"/>
-          <el-menu-item index="1">请登录</el-menu-item>
-        </el-menu>
-      </el-header>
-      <el-main>
-        <el-row>
-          <el-col :span="16">
-            <div class="grid-content ep-bg-purple"/>
-          </el-col>
-          <el-col :span="8">
-            <div class="grid-content ep-bg-purple-light"/>
-            <el-form
-                ref="ruleFormRef"
-                :inline="false"
-                :model="formInline"
-                :rules="rules"
-                class="demo-form-inline"
-                style="width: 300px"
-            >
-              <el-form-item label="账号" prop="user">
-                <el-input v-model="formInline.user" placeholder="user"/>
-              </el-form-item>
-              <el-form-item label="密码" prop="region">
-                <el-input
-                    v-model="formInline.region"
-                    placeholder="password"
-                    show-password
-                    type="password"
-                />
-              </el-form-item>
-              <el-form-item>
-                <el-button round type="primary" @click="onSubmit"
-                >登录
-                </el-button>
-              </el-form-item>
-            </el-form>
-          </el-col>
-        </el-row>
-        <el-row class="row-bg" justify="center"></el-row>
-      </el-main>
-    </el-container>
-  </div>
+  <el-row justify="space-between" style="min-height: 100vh; background-image: url('../public/img/01.jpg')">
+    <el-col :lg="18" :md="12" class="flex items-center justify-center">
+      <div>
+        <div class="font-semibold text-6xl text-yellow-500 mb-4">欢迎使用</div>
+        <div class="text-yellow-500">学生信息管理系统WEB页面</div>
+      </div>
+    </el-col>
+    <el-col :lg="6" :md="12" class="flex items-center justify-center flex-col">
+      <h1 class="text-gray-500 text-3xl mb-6">-账号密码登录-</h1>
+      <el-form ref="ruleFormRef" :inline="false" :model="formInline" :rules="rules" class="demo-form-inline"
+               label-position="left" label-width="auto"
+               style="width: 300px">
+        <el-form-item label="账号" prop="user">
+          <el-input v-model="formInline.user" placeholder="user" prefix-icon="User"/>
+        </el-form-item>
+        <el-form-item label="密码" prop="region">
+          <el-input v-model="formInline.region" placeholder="password" prefix-icon="Lock" show-password
+                    type="password"/>
+        </el-form-item>
+        <el-form-item>
+          <el-button class="w-[250px]" round type="primary" @click="onSubmit">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </el-col>
+  </el-row>
+  <el-row class="row-bg" justify="center"></el-row>
 </template>
 <script setup>
 import {ref} from "vue";
@@ -61,6 +40,8 @@ const formInline = ref({
   user: "",
   region: "",
 });
+
+//表单验证
 const rules = {
   user: [
     {required: true, message: "用户名不能为空", trigger: "blur"},
@@ -74,6 +55,7 @@ const rules = {
 
 let ruleFormRef = ref();
 
+//登录提交表单并且设置token
 const onSubmit = () => {
   ruleFormRef.value.validate((val) => {
     if (val) {
@@ -105,7 +87,8 @@ const onSubmit = () => {
 </script>
 
 <style scoped>
-.flex-grow {
-  flex-grow: 1;
+
+.el-main {
+  --el-main-padding: 10px;
 }
 </style>

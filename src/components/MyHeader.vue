@@ -27,7 +27,7 @@
   </el-menu>
 </template>
 <script setup>
-import {ref, onBeforeMount} from "vue";
+import {onBeforeMount, ref} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from 'vuex'
 import {removeToKen} from "../utils/userCookie.js";
@@ -37,7 +37,7 @@ const store = useStore()
 const activeIndex = ref("1");
 let adminiName = ref();
 
-onBeforeMount(()=>{
+onBeforeMount(() => {
   adminiName.value = `管理员${store.state.user}`
 })
 const handleSelect = () => {
@@ -60,7 +60,8 @@ const userQuit = () => {
 .flex-grow {
   flex-grow: 1;
 }
-.is-active{
+
+.is-active {
   border: transparent !important;
 }
 </style>

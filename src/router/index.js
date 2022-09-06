@@ -22,7 +22,7 @@ const routes = [
         path: "/:pathMatch(.*)*",
         name: "NotFound",
         component: () => import("../components/404.vue")
-    },
+    }
 ];
 
 const router = createRouter({

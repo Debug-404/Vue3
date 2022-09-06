@@ -3,11 +3,11 @@
     <el-col :span="3">
       <el-input v-model="inputData" placeholder="名字查找" prefix-icon="Search" @input="selStudent"/>
     </el-col>
-    <el-col :span="2">
+    <el-col :span="3">
       <el-button icon="CirclePlus" type="primary" @click="addStu">添加学生</el-button>
     </el-col>
   </el-row>
-  <el-table :data="tableData" border style="width: 100%">
+  <el-table :data="tableData" border cell-style="" style="width: 100%">
     <el-table-column label="学号" prop="id" width="150"/>
     <el-table-column label="姓名" prop="name" width="120"/>
     <el-table-column label="性别" prop="sex" width="120"/>
