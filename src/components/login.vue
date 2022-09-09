@@ -1,5 +1,5 @@
 <template>
-  <el-row justify="space-between" style="min-height: 100vh;background-image: url('/public/img/01.jpg')">
+  <el-row justify="space-between" style="min-height: 100vh;" :style="{background:`url(${imgUrl})`}">
     <el-col :lg="18" :md="12" class="flex items-center justify-center">
       <div>
         <div class="font-semibold text-6xl text-yellow-500 mb-4">欢迎使用</div>
@@ -33,6 +33,7 @@ import {useRouter} from "vue-router";
 import {useStore} from "vuex";
 import {login} from "../utils/http.js";
 import {setToKen} from "../utils/userCookie.js";
+import imgUrl from "/public/img/01.jpg"
 
 let router = useRouter();
 const stops = useStore();

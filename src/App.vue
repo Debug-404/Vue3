@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import {onBeforeMount, onMounted, ref} from 'vue'
+import {onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref} from 'vue'
 import {ElLoading} from 'element-plus'
 
 let loadingInstance = null
@@ -20,6 +20,25 @@ onMounted(() => {
   loadingInstance.close()
 })
 
+onBeforeUpdate(() => {
+  loadingInstance = ElLoading.service({
+    text: "加载中"
+  })
+})
+
+onUpdated(() => {
+  loadingInstance.close()
+})
+
+onBeforeUnmount(() => {
+  loadingInstance = ElLoading.service({
+    text: "加载中"
+  })
+})
+
+onUnmounted(() => {
+  loadingInstance.close()
+})
 
 </script>
 <style>
