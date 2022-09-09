@@ -27,7 +27,7 @@
   </el-menu>
 </template>
 <script setup>
-import {onBeforeMount, ref} from "vue";
+import {ref} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from 'vuex'
 import {removeToKen} from "../utils/userCookie.js";
@@ -35,11 +35,8 @@ import {removeToKen} from "../utils/userCookie.js";
 const router = useRouter();
 const store = useStore()
 const activeIndex = ref("1");
-let adminiName = ref();
+let adminiName = `管理员${store.state.user}`;
 
-onBeforeMount(() => {
-  adminiName.value = `管理员${store.state.user}`
-})
 const handleSelect = () => {
   alert("欢迎使用学生信息管理系统");
 };

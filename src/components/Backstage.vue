@@ -21,7 +21,8 @@
 <script setup>
 import MyContent from "./MyContent.vue";
 import MyNav from "./MyNav.vue";
-import MyHeader from "./MyHeader.vue";</script>
+import MyHeader from "./MyHeader.vue";
+</script>
 
 <style scoped>
 .el-main {

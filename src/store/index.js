@@ -8,7 +8,8 @@ const store = createStore({
     },
     mutations: {
         setUser(state, user) {
-            localStorage.setItem("user", user)
+            state.user = user;
+            localStorage.setItem("user", user);
         },
         removeUser() {
             localStorage.clear()
