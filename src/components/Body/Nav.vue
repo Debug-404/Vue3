@@ -7,9 +7,13 @@
         </div>
       </el-collapse-item>
       <el-collapse-item name="2" title="功能1">
-        <div>
-          还没想好
-        </div>
+        <el-link type="primary">
+          <router-link to="/backstage/">信息</router-link>
+        </el-link>
+        <br>
+        <el-link type="primary">
+          <router-link to="/backstage/score">成绩</router-link>
+        </el-link>
       </el-collapse-item>
       <el-collapse-item name="3" title="功能2">
         <div>
@@ -31,3 +35,12 @@ const activeNames = ref(['1'])
 
 
 </script>
+<style scoped>
+.el-link {
+  margin-right: 8px;
+}
+
+.el-link .el-icon--right.el-icon {
+  vertical-align: text-bottom;
+}
+</style>

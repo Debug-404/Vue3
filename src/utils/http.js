@@ -50,8 +50,15 @@ export function changePassword(user, password) {
     return request.post("/changePassword", {user, password})
 }
 
-export function selPassword(){
+export function selPassword() {
     /**
      * @校验当前密码是否一致
      */
+}
+
+export function selScore() {
+    /**
+     * @查询全部学生成绩
+     */
+    return request.post("/Score")
 }

@@ -10,7 +10,7 @@
             <MyNav/>
           </el-col>
           <el-col :lg="20" :md="18">
-            <MyContent/>
+            <router-view></router-view>
           </el-col>
         </el-row>
       </el-main>
@@ -19,9 +19,8 @@
 </template>
 
 <script setup>
-import MyContent from "./MyContent.vue";
-import MyNav from "./MyNav.vue";
-import MyHeader from "./MyHeader.vue";
+import MyNav from "./Body/Nav.vue";
+import MyHeader from "./Body/Header.vue";
 </script>
 
 <style scoped>

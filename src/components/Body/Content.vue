@@ -7,7 +7,7 @@
       <el-button icon="CirclePlus" type="primary" @click="addStu">添加学生</el-button>
     </el-col>
   </el-row>
-  <el-table :data="tableData" border cell-style="" style="width: 100%">
+  <el-table :data="tableData" border style="width: 100%">
     <el-table-column label="学号" prop="id" width="150"/>
     <el-table-column label="姓名" prop="name" width="120"/>
     <el-table-column label="性别" prop="sex" width="120"/>
@@ -58,7 +58,7 @@
 <script setup>
 import {onBeforeMount, ref} from "vue";
 import {ElNotification} from "element-plus";
-import {addStudent, datalist, deleteStudent, modifyData} from "../utils/http.js";
+import {addStudent, datalist, deleteStudent, modifyData} from "../../utils/http.js";
 
 let inputData = ref(""); //输入框
 let tableData = ref();

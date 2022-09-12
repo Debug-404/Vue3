@@ -7,11 +7,30 @@ const routes = [
         path: "/",
         name: "login",
         component: () => import("../components/login.vue"),
+        meta: {
+            title: "登录"
+        }
     },
     {
         path: "/backstage",
         name: "backstage",
         component: () => import("../components/Backstage.vue"),
+        children: [
+            {
+                path: '',
+                component: () => import("../components/Body/Content.vue"),
+                meta: {
+                    title: "学生信息"
+                }
+            },
+            {
+                path: "score",
+                component: () => import("../components/Body/score.vue"),
+                meta: {
+                    title: "学生成绩"
+                }
+            }
+        ]
     },
     {
         path: "/backstage/admin",
@@ -31,6 +50,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+    document.title = to.meta.title;
     if (!getToKen() && to.path !== "/") {
         ElNotification({
             title: "Error",
@@ -39,7 +59,7 @@ router.beforeEach((to, from, next) => {
         });
         next({path: "/"})
     } else if (getToKen() && to.path === "/") {
-        next({path: "/backstage"})
+        next({path: "/backstage/"})
     } else {
         next()
     }
