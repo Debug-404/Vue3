@@ -7,7 +7,7 @@
       <el-button icon="CirclePlus" type="primary" @click="addStu">添加学生</el-button>
     </el-col>
   </el-row>
-  <el-table :data="tableData" border style="width: 100%">
+  <el-table :data="tableData" border style="width: 100%" @cell-click="pustStudenScore">
     <el-table-column label="学号" prop="id" width="150"/>
     <el-table-column label="姓名" prop="name" width="120"/>
     <el-table-column label="性别" prop="sex" width="120"/>
@@ -26,7 +26,8 @@
   </el-table>
   <!--  对话框-->
   <div>
-    <el-dialog v-model="dialogFormVisible" :title="dialogType === 'add' ? '新增' : '编辑'" draggable width="500px">
+    <el-dialog v-model="dialogFormVisible" :title="dialogType === 'add' ? '新增' : '编辑'" draggable width="500px"
+               @close="Clear(ruleFormRef)">
       <el-form ref="ruleFormRef" :model="form" :rules="rules">
         <el-form-item :label-width="60" label="学号" prop="id">
           <el-input v-model="form.id" :disabled="prohibit" autocomplete="off"/>
@@ -59,16 +60,17 @@
 import {onBeforeMount, ref} from "vue";
 import {ElNotification} from "element-plus";
 import {addStudent, datalist, deleteStudent, modifyData} from "../../utils/http.js";
+import {useRouter} from "vue-router";
 
 let inputData = ref(""); //输入框
 let tableData = ref();
-let tableDataCopy = [];
 let dialogFormVisible = ref(false); //是否显示对话框
-let form = ref({}); //临时数据
+let form = ref(); //临时数据
 let dialogType = ref("add");
 let No;
 let prohibit = ref(true)
 let ruleFormRef = ref()
+let router = useRouter();
 //编辑
 const changeDialog = (row, index) => {
   dialogFormVisible.value = true;
@@ -78,17 +80,15 @@ const changeDialog = (row, index) => {
   No = index;
 };
 //axios+钩子函数 加载数据
-onBeforeMount(() => {
-  datalist()
-      .then((res) => {
-        tableData.value = res["data"];
-        tableDataCopy = res["data"];
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+onBeforeMount(async () => {
+  const data = await datalist()
+  tableData.value = data["data"];
 });
-
+//清除验证提示
+const Clear = (ruleFormRef) => {
+  if (!ruleFormRef) return
+  ruleFormRef.resetFields()
+}
 
 //要添加信息的验证规则
 const rules = {
@@ -130,39 +130,33 @@ const rules = {
 const tableConfig = () => {
   dialogFormVisible.value = false;
   if (dialogType.value === "add") {
-    ruleFormRef.value.validate((val) => {
+    ruleFormRef.value.validate(val => {
       if (val) {
-        console.log(form.value)
         addStudent(form.value).then(() => {
           tableData.value.push(form.value);
           form.value = null;
-        }).catch((err) => {
-          console.log(err)
         })
       } else {
-        console.log(val)
         ElNotification({
           title: "warning",
           message: "操作失败请重新确认",
           type: "warning",
-        });
+        })
       }
-    });
+    })
   } else {
     modifyData(form.value)
         .then((data) => {
           if (data["code"]) {
-            console.log(form.value);
             tableData.value[No] = form.value;
             form.value = {};
           }
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
           form.value = {};
-        });
+        })
   }
-};
+}
 //激活 添加信息对话框
 const addStu = () => {
   dialogFormVisible.value = true;
@@ -176,7 +170,7 @@ const delStudent = ({id}) => {
     deleteStudent(id)
         .then((data) => {
           if (data["code"]) {
-            let index = tableData.value.findIndex((item) => item.id === id);
+            let index = tableData.value.findIndex(item => item.id === id);
             tableData.value.splice(index, 1);
           } else {
             ElNotification({
@@ -186,20 +180,28 @@ const delStudent = ({id}) => {
             });
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
   }
 };
+const pustStudenScore = (row, column, cell, event) => {
+  if (column.label === "学号") {
+    router.push({
+      name: "StudentScore",
+      params: {
+        id: row.id
+      }
+    })
+  }
 
+}
 //模糊搜索
-const selStudent = () => {
+const selStudent = async () => {
   if (inputData.value.length > 0) {
     tableData.value = tableData.value.filter((item) =>
         item.name.match(inputData.value)
     );
   } else {
-    tableData.value = tableDataCopy;
+    const data = await datalist()
+    tableData.value = data["data"]
   }
 };
 </script>

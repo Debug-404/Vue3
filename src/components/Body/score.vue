@@ -1,7 +1,6 @@
 <template>
   <span>张青平</span>
   <div id="score">
-
   </div>
 </template>
 

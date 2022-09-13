@@ -62,3 +62,17 @@ export function selScore() {
      */
     return request.post("/Score")
 }
+
+export function selectCourse() {
+    /**
+     * @获取每个课程的人数
+     */
+    return request.post("/Course")
+}
+
+export function getOneStudentScore(user) {
+    /**
+     * @获取单个学生课程成绩
+     */
+    return request.post("/getOneStudent", {user})
+}

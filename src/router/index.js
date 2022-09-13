@@ -29,6 +29,21 @@ const routes = [
                 meta: {
                     title: "学生成绩"
                 }
+            },
+            {
+                path: "StudentScore/:id",
+                name: "StudentScore",
+                component: () => import("../components/Body/StudentScore.vue"),
+                meta: {
+                    title: "单人成绩"
+                }
+            },
+            {
+                path: "course",
+                component: () => import("../components/Body/Course.vue"),
+                meta: {
+                    title: "课程人数"
+                }
             }
         ]
     },

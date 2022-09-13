@@ -1,6 +1,6 @@
 <template>
   <div class="demo-collapse">
-    <el-collapse v-model="activeNames">
+    <el-collapse v-model="activeNames" accordion="true">
       <el-collapse-item name="1" title="介绍">
         <div>
           基于vue3实现的学生信息管理系统
@@ -13,6 +13,10 @@
         <br>
         <el-link type="primary">
           <router-link to="/backstage/score">成绩</router-link>
+        </el-link>
+        <br>
+        <el-link type="primary">
+          <router-link to="/backstage/course">课程</router-link>
         </el-link>
       </el-collapse-item>
       <el-collapse-item name="3" title="功能2">
