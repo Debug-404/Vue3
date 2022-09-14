@@ -2,12 +2,12 @@
   <div class="common-layout">
     <el-container>
       <el-header>
-        <MyHeader/>
+        <MyHeader />
       </el-header>
       <el-main>
-        <el-row :gutter="10" style="min-height: 100vh">
+        <el-row :gutter="10" style="height: 100%">
           <el-col :lg="4" :md="6">
-            <MyNav/>
+            <MyNav />
           </el-col>
           <el-col :lg="20" :md="18">
             <router-view></router-view>

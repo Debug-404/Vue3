@@ -1,23 +1,23 @@
 <template>
   <el-menu
-      :default-active="activeIndex"
-      :ellipsis="false"
-      class="el-menu-demo"
-      menu-trigger="click"
-      mode="horizontal"
+    :default-active="activeIndex"
+    :ellipsis="false"
+    class="el-menu-demo"
+    menu-trigger="click"
+    mode="horizontal"
   >
     <el-menu-item index="0">学生信息管理系统</el-menu-item>
-    <div class="flex-grow"/>
+    <div class="flex-grow" />
     <el-menu-item index="1" @click="handleSelect">
       <el-icon>
-        <User/>
+        <User />
       </el-icon>
-      {{ adminiName }}
+      {{ name }}
     </el-menu-item>
     <el-sub-menu index="2">
       <template #title>
         <el-icon>
-          <Setting/>
+          <Setting />
         </el-icon>
         设置
       </template>
@@ -27,15 +27,15 @@
   </el-menu>
 </template>
 <script setup>
-import {ref} from "vue";
-import {useRouter} from "vue-router";
-import {useStore} from 'vuex'
-import {removeToKen} from "../../utils/userCookie.js";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { removeToKen } from "../../utils/userCookie.js";
 
 const router = useRouter();
-const store = useStore()
+const store = useStore();
 const activeIndex = ref("1");
-let adminiName = `管理员${store.state.user}`;
+let name = `管理员${store.state.user}`;
 
 const handleSelect = () => {
   alert("欢迎使用学生信息管理系统");
@@ -47,11 +47,11 @@ const userModify = () => {
 };
 const userQuit = () => {
   router.push({
-    path: "/"
+    path: "/",
   });
-  store.commit("removeUser")
-  removeToKen()
-}
+  store.commit("removeUser");
+  removeToKen();
+};
 </script>
 <style scoped>
 .flex-grow {

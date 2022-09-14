@@ -25,7 +25,7 @@ const routes = [
             },
             {
                 path: "score",
-                component: () => import("../components/Body/score.vue"),
+                component: () => import("../components/Body/allScore.vue"),
                 meta: {
                     title: "学生成绩"
                 }
@@ -33,7 +33,7 @@ const routes = [
             {
                 path: "StudentScore/:id",
                 name: "StudentScore",
-                component: () => import("../components/Body/StudentScore.vue"),
+                component: () => import("../components/Body/oneScore.vue"),
                 meta: {
                     title: "单人成绩"
                 }

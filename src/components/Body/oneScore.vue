@@ -1,12 +1,6 @@
 <template>
   <div>
-    <el-descriptions
-        :column="3"
-        border
-        class="margin-top"
-        size="Default"
-        title="With border"
-    >
+    <el-descriptions :column="3" border class="margin-top" size="Default" title="With border">
       <el-descriptions-item>
         <template #label>
           <div class="cell-item">
