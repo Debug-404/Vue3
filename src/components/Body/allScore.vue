@@ -5,7 +5,7 @@
 
 <script setup></script>
 
-<style>
+<style scoped>
 #score {
   margin: 0;
   padding: 0;

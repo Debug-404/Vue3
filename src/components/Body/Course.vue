@@ -3,8 +3,8 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { getAllCourse } from "../../utils/http.js";
+import {onMounted} from "vue";
+import {getAllCourse} from "../../utils/http.js";
 import * as echarts from "echarts";
 
 onMounted(async () => {
@@ -41,7 +41,7 @@ onMounted(async () => {
 });
 </script>
 
-<style>
+<style scoped>
 #course {
   margin: 0;
   padding: 0;

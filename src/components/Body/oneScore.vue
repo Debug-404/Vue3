@@ -65,6 +65,6 @@ getOneStudentScore(route.params.id).then(res => {
 })
 </script>
 
-<style>
+<style scoped>
 
 </style>
