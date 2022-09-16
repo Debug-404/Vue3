@@ -1,42 +1,54 @@
 <template>
-  <div class="demo-collapse">
-    <el-collapse v-model="activeNames" accordion>
-      <el-collapse-item name="1" title="介绍">
-        <div>基于vue3实现的学生信息管理系统</div>
-      </el-collapse-item>
-      <el-collapse-item name="2" title="功能1">
-        <el-link type="primary">
-          <router-link to="/backstage/">信息</router-link>
-        </el-link>
-        <br/>
-        <el-link type="primary">
-          <router-link to="/backstage/score">成绩</router-link>
-        </el-link>
-        <br/>
-        <el-link type="primary">
-          <router-link to="/backstage/course">课程</router-link>
-        </el-link>
-      </el-collapse-item>
-      <el-collapse-item name="3" title="功能2">
-        <div>还没想好</div>
-      </el-collapse-item>
-      <el-collapse-item name="4" title="功能3">
-        <div>还没想好</div>
-      </el-collapse-item>
-    </el-collapse>
-  </div>
+  <el-menu
+      :router="true"
+      class="el-menu-vertical-demo"
+  >
+    <el-sub-menu index="1">
+      <template #title>
+        <el-icon>
+          <icon-menu/>
+        </el-icon>
+        <span>信息管理</span>
+      </template>
+      <el-menu-item-group title="学生">
+        <el-menu-item index="/backstage/">基本信息</el-menu-item>
+      </el-menu-item-group>
+      <el-menu-item-group title="学科">
+        <el-menu-item index="/backstage/course">成绩汇总</el-menu-item>
+      </el-menu-item-group>
+    </el-sub-menu>
+    <el-sub-menu index="2">
+      <template #title>
+        <el-icon>
+          <setting/>
+        </el-icon>
+        <span>账号管理</span>
+      </template>
+      <el-menu-item-group>
+        <el-menu-item index="/backstage/admin">修改密码</el-menu-item>
+      </el-menu-item-group>
+      <el-menu-item-group>
+        <el-menu-item index="5" @click="userQuit2">退出登录</el-menu-item>
+      </el-menu-item-group>
+    </el-sub-menu>
+  </el-menu>
 </template>
 <script setup>
-import {ref} from "vue";
+import {Menu as IconMenu,} from '@element-plus/icons-vue';
+import {removeToKen} from "../../utils/userCookie.js";
+import {useRouter} from "vue-router";
+import {useStore} from "vuex";
 
-const activeNames = ref("1");
+const router = useRouter()
+const store = useStore()
+const userQuit2 = () => {
+  router.push({
+    path: "/",
+  });
+  store.commit("removeUser");
+  removeToKen();
+};
 </script>
 <style scoped>
-.el-link {
-  margin-right: 8px;
-}
 
-.el-link .el-icon--right.el-icon {
-  vertical-align: text-bottom;
-}
 </style>

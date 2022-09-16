@@ -3,7 +3,7 @@ import {createStore} from 'vuex'
 const store = createStore({
     state() {
         return {
-            user: localStorage.getItem("user")
+            user: localStorage.getItem("user"),
         }
     },
     mutations: {
@@ -14,7 +14,6 @@ const store = createStore({
         removeUser() {
             localStorage.clear()
         }
-
     }
 })
 export default store

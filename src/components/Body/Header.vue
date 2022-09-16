@@ -1,23 +1,22 @@
 <template>
   <el-menu
-    :default-active="activeIndex"
-    :ellipsis="false"
-    class="el-menu-demo"
-    menu-trigger="click"
-    mode="horizontal"
+      :ellipsis="false"
+      class="el-menu-demo"
+      menu-trigger="click"
+      mode="horizontal"
   >
-    <el-menu-item index="0">学生信息管理系统</el-menu-item>
-    <div class="flex-grow" />
+    <el-menu-item index="0" @click="router.push('/')">学生信息管理系统</el-menu-item>
+    <div class="flex-grow"/>
     <el-menu-item index="1" @click="handleSelect">
       <el-icon>
-        <User />
+        <User/>
       </el-icon>
       {{ name }}
     </el-menu-item>
     <el-sub-menu index="2">
       <template #title>
         <el-icon>
-          <Setting />
+          <Setting/>
         </el-icon>
         设置
       </template>
@@ -27,14 +26,12 @@
   </el-menu>
 </template>
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { useStore } from "vuex";
-import { removeToKen } from "../../utils/userCookie.js";
+import {useRouter} from "vue-router";
+import {useStore} from "vuex";
+import {removeToKen} from "../../utils/userCookie.js";
 
 const router = useRouter();
 const store = useStore();
-const activeIndex = ref("1");
 let name = `管理员${store.state.user}`;
 
 const handleSelect = () => {

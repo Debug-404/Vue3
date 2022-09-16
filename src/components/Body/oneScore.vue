@@ -10,7 +10,7 @@
             学号
           </div>
         </template>
-        {{ route.params.id }}
+        {{ stu.id }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template #label>
@@ -18,10 +18,10 @@
             <el-icon>
               <UserFilled/>
             </el-icon>
-            名字
+            姓名
           </div>
         </template>
-        待定
+        {{ stu.name }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template #label>
@@ -37,29 +37,36 @@
     </el-descriptions>
   </div>
   <div>
-    <el-table :data="studentData" border="ture" height="250" stripe style="width: 100%">
-      <el-table-column label="课程" prop="course" width="180"/>
-      <el-table-column label="成绩" prop="score" width="180"/>
+    <el-table :border="true" :data="studentData" height="250" stripe style="width: 100%">
+      <el-table-column label="课程名字" prop="courseName" width="180"/>
+      <el-table-column label="课程编号" prop="scoreId" width="180"/>
+      <el-table-column label="课程成绩" prop="courseScore" width="180"/>
       <el-table-column label="学分" prop="Num"/>
     </el-table>
   </div>
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import {useRoute} from "vue-router"
 import {getOneStudentScore} from "../../utils/http.js";
 
+let stu = reactive({
+  id: "",
+  name: ""
+})
 const route = useRoute()
 let studentData = ref()
-
-getOneStudentScore(route.params.id).then(res => {
-  console.log(res["data"])
-  studentData.value = res["data"].map(val => {
+onMounted(async () => {
+  const data = await getOneStudentScore(route.params.id)
+  stu.id = data['data']['info'][0][0]
+  stu.name = data['data']['info'][0][1]
+  studentData.value = data["data"]["grade"].map(val => {
     return {
-      course: val[3],
-      score: val[2],
-      Num: val[4]
+      courseName: val[0],
+      scoreId: val[1],
+      courseScore: val[2],
+      Num: val[3]
     }
   })
 })

@@ -116,7 +116,7 @@ let dialogType = ref("add");
 let No;
 let prohibit = ref(true);
 let ruleFormRef = ref();
-let router = useRouter();
+const router = useRouter();
 //编辑
 const changeDialog = (scope) => {
   console.log(scope);
@@ -225,8 +225,9 @@ const delStudent = ({id}) => {
     });
   }
 };
-const pushStudentScore = (row, column, cell, event) => {
-  if (column.label === "学号") {
+//跳转个人信息
+const pushStudentScore = (row, column) => {
+  if (column.label !== "操作") {
     router.push({
       name: "StudentScore",
       params: {
@@ -242,7 +243,7 @@ const selStudent = async () => {
         item.name.match(inputData.value)
     );
   } else {
-    const data = await datalist();
+    const data = await getAllStudent();
     tableData.value = data["data"];
   }
 };
