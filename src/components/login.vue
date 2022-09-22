@@ -54,7 +54,7 @@ import {ref} from "vue";
 import {ElNotification} from "element-plus";
 import {useRouter} from "vue-router";
 import {useStore} from "vuex";
-import {login} from "../utils/http.js";
+import {login} from "../utils/api.js";
 import {setToKen} from "../utils/userCookie.js";
 import imgUrl from "/public/img/01.jpg";
 

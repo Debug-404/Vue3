@@ -5,7 +5,7 @@
         <template #label>
           <div class="cell-item">
             <el-icon>
-              <user/>
+              <User/>
             </el-icon>
             学号
           </div>
@@ -49,7 +49,7 @@
 <script setup>
 import {onMounted, reactive, ref} from "vue";
 import {useRoute} from "vue-router"
-import {getOneStudentScore} from "../../utils/http.js";
+import {getOneStudentScore} from "../../utils/api.js";
 
 let stu = reactive({
   id: "",
@@ -61,6 +61,7 @@ onMounted(async () => {
   const data = await getOneStudentScore(route.params.id)
   stu.id = data['data']['info'][0][0]
   stu.name = data['data']['info'][0][1]
+  console.log(data["data"])
   studentData.value = data["data"]["grade"].map(val => {
     return {
       courseName: val[0],

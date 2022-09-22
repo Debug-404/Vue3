@@ -58,7 +58,7 @@
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from "vuex";
-import {changePassword, login} from "../utils/http.js";
+import {changePassword, login} from "../utils/api.js";
 import {ElNotification} from "element-plus";
 
 const store = useStore(); //vuex 状态

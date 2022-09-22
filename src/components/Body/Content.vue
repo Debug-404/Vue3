@@ -105,7 +105,7 @@
 <script setup>
 import {onBeforeMount, ref} from "vue";
 import {ElNotification} from "element-plus";
-import {addStudent, deleteStudent, getAllStudent, upDataStudent,} from "../../utils/http.js";
+import {addStudent, deleteStudent, getAllStudent, upDataStudent,} from "../../utils/api.js";
 import {useRouter} from "vue-router";
 
 let inputData = ref(""); //输入框

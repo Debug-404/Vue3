@@ -17,7 +17,7 @@
 
 <script setup>
 import {onMounted, ref} from "vue";
-import {getAllCourse} from "../../utils/http.js";
+import {getAllCourse} from "../../utils/api.js";
 import {useRouter} from "vue-router";
 //import * as echarts from "echarts";
 

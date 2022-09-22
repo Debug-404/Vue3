@@ -9,6 +9,6 @@ export default defineConfig({
         port: 48888,
         open: true,
     },
-    plugins: [vue(),WindiCSS()],
+    plugins: [vue(), WindiCSS()],
     base: "./",
 });
