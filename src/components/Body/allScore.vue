@@ -97,10 +97,8 @@ const allScoreImg = async (val) => {
           position: 'center',
         },
         itemStyle: {
-          normal: {
-            color: function (params) {
-              return colorList[params.dataIndex];
-            },
+          color: function (params) {
+            return colorList[params.dataIndex];
           },
         },
         emphasis: {

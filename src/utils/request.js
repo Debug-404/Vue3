@@ -5,7 +5,7 @@ import {getToKen} from "./userCookie.js";
 let loading = null
 
 const request = axios.create({
-    baseURL: 'http://127.0.0.1:5000',
+    baseURL: 'http://1.116.149.66:5000',
     timeout: 5000,
     headers: {"Content-Type": "application/json"}
 })

@@ -60,7 +60,7 @@
           ref="ruleFormRef"
           :model="form"
           :rules="rules"
-          status-icon="true"
+          :status-icon="true"
       >
         <el-form-item :label-width="60" label="学号" prop="id">
           <el-input v-model="form.id" :disabled="prohibit" autocomplete="off"/>
@@ -119,7 +119,6 @@ let ruleFormRef = ref();
 const router = useRouter();
 //编辑
 const changeDialog = (scope) => {
-  console.log(scope);
   dialogFormVisible.value = true;
   prohibit.value = true;
   dialogType.value = "edit";
