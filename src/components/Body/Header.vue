@@ -13,22 +13,11 @@
       </el-icon>
       {{ name }}
     </el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>
-        <el-icon>
-          <Setting/>
-        </el-icon>
-        设置
-      </template>
-      <el-menu-item index="2-1" @click="userModify">修改密码</el-menu-item>
-      <el-menu-item index="2-2" @click="userQuit">退出登录</el-menu-item>
-    </el-sub-menu>
   </el-menu>
 </template>
 <script setup>
 import {useRouter} from "vue-router";
 import {useStore} from "vuex";
-import {removeToKen} from "../../utils/userCookie.js";
 
 const router = useRouter();
 const store = useStore();
@@ -36,18 +25,6 @@ let name = `管理员${store.state.user}`;
 
 const handleSelect = () => {
   alert("欢迎使用学生信息管理系统");
-};
-const userModify = () => {
-  router.push({
-    path: "/backstage/admin",
-  });
-};
-const userQuit = () => {
-  router.push({
-    path: "/",
-  });
-  store.commit("removeUser");
-  removeToKen();
 };
 </script>
 <style scoped>

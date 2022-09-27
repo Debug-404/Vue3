@@ -55,11 +55,11 @@ export function getAllCourse() {
     return request.post("/getAllCourse")
 }
 
-export function getAllStudentScore() {
+export function getAllStudentScore(user) {
     /**
      * @查询单个课程全部学生成绩
      */
-    return request.post("/getAllStudentScore")
+    return request.post("/getAllStudentScore", {user})
 }
 
 export function getOneStudentScore(user) {

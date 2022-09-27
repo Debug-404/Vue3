@@ -11,8 +11,9 @@ const store = createStore({
             state.user = user;
             localStorage.setItem("user", user);
         },
-        removeUser() {
-            localStorage.clear()
+        removeUser(state) {
+            state.user = "";
+            localStorage.clear();
         }
     }
 })

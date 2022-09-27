@@ -46,12 +46,15 @@ const routes = [
                     title: "课程成绩"
                 }
             },
+            {
+                path: "admin",
+                name: "admin",
+                component: () => import("../components/admin.vue"),
+                meta: {
+                    title: "修改密码"
+                }
+            },
         ]
-    },
-    {
-        path: "/backstage/admin",
-        name: "admin",
-        component: () => import("../components/admin.vue")
     },
     {
         path: "/:pathMatch(.*)*",

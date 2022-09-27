@@ -23,8 +23,5 @@ import MyNav from "./Body/Nav.vue";
 import MyHeader from "./Body/Header.vue";</script>
 
 <style scoped>
-.el-main {
-  --el-main-padding: 10px;
-}
 
 </style>

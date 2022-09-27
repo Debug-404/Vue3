@@ -28,7 +28,7 @@
         <el-menu-item index="/backstage/admin">修改密码</el-menu-item>
       </el-menu-item-group>
       <el-menu-item-group>
-        <el-menu-item index="5" @click="userQuit2">退出登录</el-menu-item>
+        <el-menu-item index="5" @click="userQuit">退出登录</el-menu-item>
       </el-menu-item-group>
     </el-sub-menu>
   </el-menu>
@@ -41,7 +41,7 @@ import {useStore} from "vuex";
 
 const router = useRouter()
 const store = useStore()
-const userQuit2 = () => {
+const userQuit = () => {
   router.push({
     path: "/",
   });

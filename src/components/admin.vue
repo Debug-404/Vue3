@@ -1,56 +1,33 @@
 <template>
-  <div class="common-layout">
-    <el-container>
-      <el-header>
-        <el-menu
-            :ellipsis="false"
-            class="el-menu-demo"
-            menu-trigger="click"
-            mode="horizontal"
-        >
-          <el-menu-item index="0">学生信息管理系统</el-menu-item>
-          <div class="flex-grow"/>
-          <el-menu-item index="1" @click="router.push({ path: '/backstage' })"
-          >返回
-          </el-menu-item>
-        </el-menu>
-      </el-header>
-      <el-main>
-        <el-row class="row-bg" justify="center">
-          <el-col :span="6">
-            <div class="myDiv">
-              <el-form
-                  ref="ruleFormRef"
-                  :label-position="labelPosition"
-                  :model="data"
-                  :rules="rules"
-                  label-width="100px"
-                  style="max-width: 460px"
-              >
-                <el-form-item label="当前密码" prop="currentPassword">
-                  <el-input v-model="data.currentPassword" type="password"/>
-                </el-form-item>
-                <el-form-item label="新密码" prop="newPassword1">
-                  <el-input v-model="data.newPassword1" type="password"/>
-                </el-form-item>
-                <el-form-item label="确认密码" prop="newPassword2">
-                  <el-input v-model="data.newPassword2" type="password"/>
-                </el-form-item>
-                <el-form-item>
-                  <el-button
-                      icon="Finished"
-                      round
-                      type="primary"
-                      @click="submitData"
-                  >确认修改
-                  </el-button>
-                </el-form-item>
-              </el-form>
-            </div>
-          </el-col>
-        </el-row>
-      </el-main>
-    </el-container>
+  <div class="myDiv">
+    <el-form
+        ref="ruleFormRef"
+        :model="data"
+        :rules="rules"
+        :status-icon="true"
+        label-position="right"
+        label-width="auto"
+        style="max-width: 460px"
+    >
+      <el-form-item label="当前密码" prop="currentPassword">
+        <el-input v-model="data.currentPassword" type="password"/>
+      </el-form-item>
+      <el-form-item label="新密码" prop="newPassword1">
+        <el-input v-model="data.newPassword1" type="password"/>
+      </el-form-item>
+      <el-form-item label="确认密码" prop="newPassword2">
+        <el-input v-model="data.newPassword2" type="password"/>
+      </el-form-item>
+      <el-form-item>
+        <el-button
+            icon="Finished"
+            round
+            type="primary"
+            @click="submitData"
+        >确认修改
+        </el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -64,7 +41,6 @@ import {ElNotification} from "element-plus";
 const store = useStore(); //vuex 状态
 const ruleFormRef = ref();
 const router = useRouter(); // 路由
-const labelPosition = ref("right");
 const data = ref({
   currentPassword: "",
   newPassword1: "",
@@ -155,14 +131,10 @@ const submitData = () => {
 </script>
 
 <style scoped>
-.flex-grow {
-  flex-grow: 1;
-}
 
 .myDiv {
+  width: 300px;
   padding: 20px;
-  border: 1px solid #dcdfe6;
-  border-radius: 8px;
 }
 
 </style>
